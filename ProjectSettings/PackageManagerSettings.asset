@@ -35,11 +35,19 @@ MonoBehaviour:
     m_IsDefault: 0
     m_Capabilities: 0
     m_ConfigSource: 4
-  m_UserSelectedRegistryName: Nuget
+  - m_Id: scoped:project:liltoon
+    m_Name: liltoon
+    m_Url: https://package.openupm.com
+    m_Scopes:
+    - jp.lilxyzw.liltoon
+    m_IsDefault: 0
+    m_Capabilities: 0
+    m_ConfigSource: 4
+  m_UserSelectedRegistryName: liltoon
   m_UserAddingNewScopedRegistry: 0
   m_RegistryInfoDraft:
     m_Modified: 0
     m_ErrorMessage: 
-    m_UserModificationsInstanceId: -928
-    m_OriginalInstanceId: -930
+    m_UserModificationsInstanceId: -868
+    m_OriginalInstanceId: -872
   m_LoadAssets: 0
