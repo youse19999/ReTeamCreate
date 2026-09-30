@@ -1,10 +1,11 @@
+using UnityEditor;
 using UnityEngine;
 
 public class TitleCanvas : MonoBehaviour
 {
     [SerializeField] private CanvasScriptableObject canvasParameter;
     [SerializeField] public static bool StopTitle;//Title‚Ì‘JˆÚ
-    
+
     void Start()
     {
         StopTitle = false;

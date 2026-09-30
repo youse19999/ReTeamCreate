@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,6 +7,9 @@ public class SelectGameCanvas : MonoBehaviour
     [SerializeField] private bool ChangeAnim;
     private Animator anim = null;
 
+    [SceneFolder]
+    [SerializeField]
+    private DefaultAsset gameScenes;
 
     void ChoiseGame()
     {
@@ -29,12 +33,12 @@ public class SelectGameCanvas : MonoBehaviour
         //if (Input.GetKey(KeyCode.D)) { ChangeAnim = false; }//Controls‚ð‘I‘ð
         //if (Input.GetKey(KeyCode.Space)) { ChoiseGame(); }//ŽŸ‚Ì‰æ–Ê‚Ö‘JˆÚ
 
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetAxisRaw("Horizontal") < 0.6f)
+        if (Input.GetKey(KeyCode.A) || Input.GetAxisRaw("Horizontal") < 0.6f)
         {
             ChangeAnim = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetAxisRaw("Horizontal") > 0.6f)
+        if (Input.GetKey(KeyCode.D) || Input.GetAxisRaw("Horizontal") > 0.6f)
         {
             ChangeAnim = false;
         }
