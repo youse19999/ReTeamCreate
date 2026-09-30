@@ -69,6 +69,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b9d20cff2e3af51499889589afe78619, type: 3}
       insertIndex: -1
       addedObject: {fileID: -2931659290174550237}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b9d20cff2e3af51499889589afe78619, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7571353723038520199}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b9d20cff2e3af51499889589afe78619, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6215155682664242588}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b9d20cff2e3af51499889589afe78619, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3580063306545970006}
   m_SourcePrefab: {fileID: 100100000, guid: b9d20cff2e3af51499889589afe78619, type: 3}
 --- !u!1 &2981736535927857149 stripped
 GameObject:
@@ -87,8 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: 0}
-  m_NotificationBehavior: 0
+  m_Actions: {fileID: -944628639613478452, guid: aac4118c6e552cf469caca2b68e78512, type: 3}
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -99,10 +108,18 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a38b72a0-1284-4113-b7c1-1d07311a95f9
+    m_ActionName: 'Player/MoveFoward[/XInputControllerWindows1/leftStick]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ec4cd7ce-6411-4b16-a9e9-556cc3131917
+    m_ActionName: 'Player/MoveSide[/XInputControllerWindows1/rightStick]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!54 &-3758978936357764342
@@ -155,3 +172,48 @@ CapsuleCollider:
   m_Height: 1.1
   m_Direction: 1
   m_Center: {x: 0, y: 0.55, z: 0}
+--- !u!114 &7571353723038520199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2981736535927857149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d71cf771d8b824b83b1735c69328e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stopSpeed: 1
+  speed: 4
+  deadzone: 0.25
+  rotateSpeed: 5
+--- !u!114 &6215155682664242588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2981736535927857149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0fedf75d82db9047b2b20850b6ae816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameCamera: {fileID: 2325497350536923261, guid: 83b57b0a98803ce4bb93c140e184db26, type: 3}
+  item: {fileID: 0}
+  head: {fileID: 0}
+  rotation: -0.9834858
+--- !u!114 &3580063306545970006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2981736535927857149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ae86a590d796c40a08cbbb93f15788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStructure: {fileID: 7571353723038520199}
