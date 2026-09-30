@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,13 +6,10 @@ public class SelectGameCanvas : MonoBehaviour
     [SerializeField] private bool ChangeAnim;
     private Animator anim = null;
 
-    [SceneFolder]
-    [SerializeField]
-    private DefaultAsset gameScenes;
 
     void ChoiseGame()
     {
-        if (ChangeAnim == true) { SceneManager.LoadScene("main_current2"); }
+        if (ChangeAnim == true) { SceneManager.LoadScene("main"); }
         if (ChangeAnim == false) { SceneManager.LoadScene("Controls"); }
     }
     void ChangeAnimation()
@@ -29,16 +25,14 @@ public class SelectGameCanvas : MonoBehaviour
         if (!TitleCanvas.StopTitle) { return; }
         ChangeAnimation();
 
-        //if (Input.GetKey(KeyCode.A)) {ChangeAnim = true;}//Game‚ð‘I‘ð
-        //if (Input.GetKey(KeyCode.D)) { ChangeAnim = false; }//Controls‚ð‘I‘ð
-        //if (Input.GetKey(KeyCode.Space)) { ChoiseGame(); }//ŽŸ‚Ì‰æ–Ê‚Ö‘JˆÚ
-
-        if (Input.GetKey(KeyCode.A) || Input.GetAxisRaw("Horizontal") < 0.6f)
+        if (Input.GetKeyDown(KeyCode.A) ||
+            Input.GetAxisRaw("Horizontal") < -0.8f)
         {
             ChangeAnim = true;
         }
 
-        if (Input.GetKey(KeyCode.D) || Input.GetAxisRaw("Horizontal") > 0.6f)
+        if (Input.GetKeyDown(KeyCode.D) ||
+            Input.GetAxisRaw("Horizontal") > -0.8f)
         {
             ChangeAnim = false;
         }
@@ -57,6 +51,6 @@ public class SelectGameCanvas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       Select();
+        Select();
     }
 }
