@@ -50,8 +50,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b9d20cff2e3af51499889589afe78619, type: 3}
       propertyPath: m_Name
-      value: lop_remaster
+      value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1630794972795428178, guid: b9d20cff2e3af51499889589afe78619, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7fe09aafd47cd304d9b6b9c3ff5a814f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
