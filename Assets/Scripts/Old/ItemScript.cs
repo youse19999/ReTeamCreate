@@ -6,8 +6,8 @@ public class ItemScript : MonoBehaviour
     GamePlayer gamePlayer;
 
     //疑似的なアニメーション
-    [SerializeField] float amplitude = 0.1f; // 上下幅
-    [SerializeField] float speed = 2f;        // 揺れる速さ
+    [SerializeField] float amplitude = 0.1f; 
+    [SerializeField] float speed = 2f;       
 
     public bool having = false;
 
@@ -20,6 +20,7 @@ public class ItemScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
+        if (having) {return;}
         if (!col.CompareTag("Player")){ return;}
 
         GamePlayer gamePlayer = col.GetComponent<GamePlayer>();
