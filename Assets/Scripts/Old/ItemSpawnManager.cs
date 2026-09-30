@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class ItemSpawnManager : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class ItemSpawnManager : MonoBehaviour
     [SerializeField] private LayerMask itemLayerMask;
     [SerializeField] private float navMeshSearchDistance = 2.0f;
     [SerializeField] private int maxSpawnAttempts = 20;
+    // スポーン演出
+    [SerializeField] private GameObject spawnEffectPrefab;
+    [SerializeField] private float spawnEffectDelay = 1.0f;
     public static int currentSpawnAmount;
     public List<GameObject> ItemList;
     // スペシャルアイテム
@@ -21,6 +25,8 @@ public class ItemSpawnManager : MonoBehaviour
     // ゲーム開始からの経過時間
     private float specialItemTime = 0.0f;
     private float spawnTimer = 0.0f;
+    // スポーン演出中
+    private bool isSpawning = false;
 
     void Start()
     {
@@ -53,24 +59,12 @@ public class ItemSpawnManager : MonoBehaviour
 
     void SpawnItem()
     {
-        if (spawnArea == null)
-        {
-            Debug.LogError("SpawnAreaが設定されていません");
-            return;
-        }
-
-        // スポーン間隔になっていない
-        if (spawnTimer < spawnInterval)
-        {
-            return;
-        }
+        if (spawnArea == null){Debug.LogError("SpawnAreaが設定されていません");return;}
+        if (isSpawning){return;}
+        if (spawnTimer < spawnInterval){return;}
 
         // NavMesh上かつ他アイテムと重ならない場所を探す
-        if (!TryGetSpawnPosition(out Vector3 spawnPosition))
-        {
-            Debug.LogWarning("スポーン可能な位置が見つかりませんでした");
-            return;
-        }
+        if (!TryGetSpawnPosition(out Vector3 spawnPosition)){Debug.LogWarning("スポーン可能な位置が見つかりませんでした");return;}
 
         if (currentSpawnAmount < maxSpawnAmount)
         {
@@ -78,10 +72,7 @@ public class ItemSpawnManager : MonoBehaviour
 
             int randomItemNumber = Random.Range(0, ItemList.Count);
 
-            SpawnItemObject(ItemList[randomItemNumber], spawnPosition);
-
-
-            currentSpawnAmount++;
+            StartCoroutine(SpawnItemWithEffect(ItemList[randomItemNumber],spawnPosition));
 
             spawnTimer = 0.0f;
 
@@ -102,13 +93,53 @@ public class ItemSpawnManager : MonoBehaviour
 
                 int randomItemNumber = Random.Range(0, SpecialItemList.Count);
 
-                SpawnItemObject(SpecialItemList[randomItemNumber], spawnPosition);
-
-                currentSpawnAmount++;
+                StartCoroutine(SpawnItemWithEffect(SpecialItemList[randomItemNumber],spawnPosition));
 
                 spawnTimer = 0.0f;
+
+                return;
             }
         }
+    }
+
+    // スポーン演出後にアイテムを生成
+    IEnumerator SpawnItemWithEffect(GameObject prefab,Vector3 spawnPosition)
+    {
+        isSpawning = true;
+
+        // スポーンエフェクト生成
+        if (spawnEffectPrefab != null)
+        {
+            GameObject effect = Instantiate(spawnEffectPrefab,spawnPosition + Vector3.up * 0.05f,Quaternion.identity);
+
+            // ParticleSystemを取得して明示的に再生
+            ParticleSystem particle = effect.GetComponentInChildren<ParticleSystem>();
+
+            if (particle != null)
+            {
+                particle.Play();
+            }
+            else
+            {
+                Debug.LogWarning("SpawnEffectにParticleSystemがありません");
+            }
+
+            Destroy(effect, spawnEffectDelay + 2.0f);
+        }
+        else
+        {
+            Debug.LogWarning("SpawnEffectPrefabが設定されていません");
+        }
+
+        // 演出待ち
+        yield return new WaitForSeconds(spawnEffectDelay);
+
+        // アイテム生成
+        SpawnItemObject(prefab, spawnPosition);
+
+        currentSpawnAmount++;
+
+        isSpawning = false;
     }
 
     // アイテムを生成し、Colliderの底面を床の高さに合わせる
