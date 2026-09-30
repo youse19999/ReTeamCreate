@@ -32,7 +32,7 @@ public class SelectGameCanvas : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.D) ||
-            Input.GetAxisRaw("Horizontal") > -0.8f)
+            Input.GetAxisRaw("Horizontal") > 0.8f)
         {
             ChangeAnim = false;
         }
