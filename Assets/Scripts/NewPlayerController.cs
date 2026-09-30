@@ -30,6 +30,7 @@ public class NewPlayerController : MonoBehaviour
 
         Debug.Log($"Axis X: {x}, Y: {y}");
 
-        rigidbody.AddForce(new Vector3(x,0,y)* speed);
+        rigidbody.AddForce((this.transform.forward*y)*speed);
+        rigidbody.AddTorque(new Vector3(0, x, 0)*speed);
     }
 }
