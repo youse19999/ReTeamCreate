@@ -71,13 +71,7 @@ PrefabInstance:
       addedObject: {fileID: -2931659290174550237}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b9d20cff2e3af51499889589afe78619, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7571353723038520199}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b9d20cff2e3af51499889589afe78619, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6215155682664242588}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b9d20cff2e3af51499889589afe78619, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3580063306545970006}
+      addedObject: {fileID: -4099812573693688413}
   m_SourcePrefab: {fileID: 100100000, guid: b9d20cff2e3af51499889589afe78619, type: 3}
 --- !u!1 &2981736535927857149 stripped
 GameObject:
@@ -111,15 +105,15 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: a38b72a0-1284-4113-b7c1-1d07311a95f9
-    m_ActionName: 'Player/MoveFoward[/XInputControllerWindows1/leftStick]'
+    m_ActionId: 5dca7f71-e8ba-48f9-a48a-fc0cbec5f251
+    m_ActionName: 'Gameplay/Move[/XInputControllerWindows1/leftStick]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: ec4cd7ce-6411-4b16-a9e9-556cc3131917
-    m_ActionName: 'Player/MoveSide[/XInputControllerWindows1/rightStick]'
+    m_ActionId: e51effcd-637b-46c2-ae68-de8cc8f86f03
+    m_ActionName: 'Gameplay/Move2[/XInputControllerWindows1/rightStick]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!54 &-3758978936357764342
@@ -131,8 +125,8 @@ Rigidbody:
   m_GameObject: {fileID: 2981736535927857149}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 1
+  m_AngularDrag: 35
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -147,7 +141,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!136 &-2931659290174550237
 CapsuleCollider:
@@ -172,7 +166,7 @@ CapsuleCollider:
   m_Height: 1.1
   m_Direction: 1
   m_Center: {x: 0, y: 0.55, z: 0}
---- !u!114 &7571353723038520199
+--- !u!114 &-4099812573693688413
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,39 +175,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2981736535927857149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74d71cf771d8b824b83b1735c69328e8, type: 3}
+  m_Script: {fileID: 11500000, guid: ef00a3237155e254eb43129765d5348d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stopSpeed: 1
-  speed: 4
-  deadzone: 0.25
-  rotateSpeed: 5
---- !u!114 &6215155682664242588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2981736535927857149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0fedf75d82db9047b2b20850b6ae816, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameCamera: {fileID: 2325497350536923261, guid: 83b57b0a98803ce4bb93c140e184db26, type: 3}
-  item: {fileID: 0}
-  head: {fileID: 0}
-  rotation: -0.9834858
---- !u!114 &3580063306545970006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2981736535927857149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1ae86a590d796c40a08cbbb93f15788, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerStructure: {fileID: 7571353723038520199}
+  speed: 15
+  inputActions: {fileID: -944628639613478452, guid: aac4118c6e552cf469caca2b68e78512, type: 3}

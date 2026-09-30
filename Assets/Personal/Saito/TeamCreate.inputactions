@@ -2,23 +2,23 @@
     "name": "TeamCreate",
     "maps": [
         {
-            "name": "Player",
+            "name": "Gameplay",
             "id": "886712fa-7076-4d1e-8f94-6fcfe628f55a",
             "actions": [
                 {
-                    "name": "MoveFoward",
+                    "name": "Move",
                     "type": "Value",
-                    "id": "a38b72a0-1284-4113-b7c1-1d07311a95f9",
-                    "expectedControlType": "Vector2",
+                    "id": "5dca7f71-e8ba-48f9-a48a-fc0cbec5f251",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
                 {
-                    "name": "MoveSide",
+                    "name": "Move2",
                     "type": "Value",
-                    "id": "ec4cd7ce-6411-4b16-a9e9-556cc3131917",
-                    "expectedControlType": "Vector2",
+                    "id": "e51effcd-637b-46c2-ae68-de8cc8f86f03",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -27,34 +27,23 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "978bfe49-cc26-4a3d-ab7b-7d7a29327403",
+                    "id": "c0dffa5f-6ff6-41d2-b408-1a28a1c372c7",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "MoveFoward",
+                    "groups": "",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "1635d3fe-58b6-4ba9-a4e2-f4b964f6b5c8",
-                    "path": "<XRController>/{Primary2DAxis}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "MoveFoward",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "33ddd7ef-b86d-4ad0-a3c0-6d8d3d682d36",
+                    "id": "dd5d06d6-d951-4b54-82e1-ca5d56fd97fc",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "MoveSide",
+                    "groups": "",
+                    "action": "Move2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
