@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class GoalArea : MonoBehaviour
 {
-    bool seted = false;
     [SerializeField] public GameObject targetPlayer;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip goalSE;
     [SerializeField] private ParticleSystem goalEffect;
-    [SerializeField] public int point = 0;//プレイヤーの得点
+    //プレイヤーの得点
+    [SerializeField] public int point = 0;
     private string playerName;
-    private string pointTargetTag;//ここにアイテムtagの名前を書く
+    //ここにアイテムtagの名前を書く
+    private string pointTargetTag;
+    bool seted = false;
     ItemSpawnManager spawnManager;
+    GamePlayer gamePlayer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,36 +32,24 @@ public class GoalArea : MonoBehaviour
         }
         return false;
     }
-    private void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter(Collider collider)
     {
-        //エリアに侵入したアイテムの固有ポイントを取得、その分ポイント加算
-     
-        if (collider.gameObject == targetPlayer)
-        {
-            //ターゲットプレイヤの所持しているアイテムを取得
-            Transform ItemPosition = targetPlayer.transform.Find("ItemPosition");
+        if (collider.gameObject != targetPlayer){return; }
+        GamePlayer gamePlayer = targetPlayer.GetComponent<GamePlayer>();
 
-            //アイテムのポイント加算と手持ちのアイテムDestory
-            foreach(Transform child in ItemPosition)
-            {
-                //ItemPositionの子オブジェクト、スクリプトを取得、このPointに加算する
-                GameObject Item = child.gameObject;
-                ItemScript itemScript = Item.GetComponent<ItemScript>();
-                this.point += itemScript.point;
-                // SE再生
-                audioSource.PlayOneShot(goalSE);
-                // エフェクト再生
-                goalEffect.Play();
+        // プレイヤーの所持アイテムを取得して手放す
+        GameObject item = gamePlayer.DropItem();
 
-                //加算を終えたらDestory
-                Destroy(Item);
+        if (item == null) { return; }
 
-                //マップ内に存在するアイテム数を減少
-                ItemSpawnManager.currentSpawnAmount--;
+        ItemScript itemScript = item.GetComponent<ItemScript>();
+        point += itemScript.point;
 
-            }
-            //デバッグ
-            Debug.Log($"{playerName}のポイント:{point}");
-        }
+        audioSource.PlayOneShot(goalSE);
+        goalEffect.Play();
+
+        Destroy(item);
+
+        Debug.Log($"{playerName}のポイント:{point}");
     }
 }

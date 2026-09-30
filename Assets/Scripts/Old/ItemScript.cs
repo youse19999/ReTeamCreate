@@ -6,7 +6,7 @@ public class ItemScript : MonoBehaviour
     GamePlayer gamePlayer;
 
     //疑似的なアニメーション
-    [SerializeField] float amplitude = 0.3f; // 上下幅
+    [SerializeField] float amplitude = 0.1f; // 上下幅
     [SerializeField] float speed = 2f;        // 揺れる速さ
 
     public bool having = false;
@@ -20,16 +20,20 @@ public class ItemScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if(col.gameObject.tag == "Player")
-        {
-            if(col.gameObject.GetComponent<GamePlayer>().HasItem())
-            {
-                return;
-            }
-            col.gameObject.GetComponent<GamePlayer>().ShowItem(this.gameObject);
-            having = true;
-            ItemSpawnManager.currentSpawnAmount--;
-        }
+        if (!col.CompareTag("Player")){ return;}
+
+        GamePlayer gamePlayer = col.GetComponent<GamePlayer>();
+
+        if (gamePlayer == null) { return; }
+        if (gamePlayer.HasItem()) { return; }
+
+        having = true;
+
+        gamePlayer.ShowItem(gameObject);
+
+        Destroy(gameObject);
+
+        ItemSpawnManager.currentSpawnAmount--;
     }
 
     private void Update()
