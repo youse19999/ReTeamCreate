@@ -141,7 +141,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &-2931659290174550237
 CapsuleCollider:
@@ -179,4 +179,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  turnSpeed: 120
   inputActions: {fileID: -944628639613478452, guid: aac4118c6e552cf469caca2b68e78512, type: 3}
+  forwardDistance: 1
+  stepHeightThreshold: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  rayStartHeight: 2
+  rayDistance: 2
