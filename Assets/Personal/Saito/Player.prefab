@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: aac4118c6e552cf469caca2b68e78512, type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 1
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -112,7 +112,7 @@ MonoBehaviour:
     m_ActionId: e51effcd-637b-46c2-ae68-de8cc8f86f03
     m_ActionName: 'Gameplay/Move2[/XInputControllerWindows1/rightStick]'
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -180,7 +180,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   turnSpeed: 120
-  inputActions: {fileID: -944628639613478452, guid: aac4118c6e552cf469caca2b68e78512, type: 3}
   forwardDistance: 1
   stepHeightThreshold: 0.5
   groundLayer:
