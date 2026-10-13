@@ -3,7 +3,7 @@ using UnityEngine;
 public class ItemScript : MonoBehaviour
 {
     public int point;//1,2,3,10
-    GamePlayer gamePlayer;
+    NewPlayerController gamePlayer;
 
     //疑似的なアニメーション
     [SerializeField] float amplitude = 0.1f; 
@@ -23,7 +23,7 @@ public class ItemScript : MonoBehaviour
         if (having) {return;}
         if (!col.CompareTag("Player")){ return;}
 
-        GamePlayer gamePlayer = col.GetComponent<GamePlayer>();
+        NewPlayerController gamePlayer = col.GetComponent<NewPlayerController>();
 
         if (gamePlayer == null) { return; }
         if (gamePlayer.HasItem()) { return; }

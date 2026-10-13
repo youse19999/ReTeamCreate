@@ -32,10 +32,14 @@ public class GoalArea : MonoBehaviour
         }
         return false;
     }
+    private void FixedUpdate()
+    {
+
+    }
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject != targetPlayer){return; }
-        GamePlayer gamePlayer = targetPlayer.GetComponent<GamePlayer>();
+        //if (collider.gameObject != targetPlayer){return; }
+        NewPlayerController gamePlayer = collider.GetComponent<NewPlayerController>();
 
         // プレイヤーの所持アイテムを取得して手放す
         GameObject item = gamePlayer.DropItem();

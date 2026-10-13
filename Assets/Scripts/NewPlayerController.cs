@@ -12,9 +12,14 @@ public class NewPlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float rayStartHeight = 2.0f;
     [SerializeField] private float rayDistance = 5.0f;
+    [SerializeField] private Transform head;
 
     private Vector2 leftStickInput;
     private Vector2 rightStickInput;
+
+    private GameObject headItem;
+
+
 
     private void Start()
     {
@@ -30,6 +35,47 @@ public class NewPlayerController : MonoBehaviour
     public void OnMove2(InputValue value)
     {
         rightStickInput = value.Get<Vector2>();
+    }
+    public bool HasItem()
+    {
+        return headItem != null;
+    }
+    public GameObject DropItem()
+    {
+        if (headItem == null)
+        {
+            return null;
+        }
+
+        GameObject item = headItem;
+        headItem = null;
+
+        item.transform.SetParent(null);
+
+        Vector3 dropPos = transform.position + transform.forward * 1.0f;
+
+        if (Physics.Raycast(dropPos + Vector3.up * 10f, Vector3.down, out RaycastHit hit, 20f))
+        {
+            item.transform.position = hit.point;
+        }
+        else
+        {
+            item.transform.position = dropPos;
+        }
+
+        return item;
+    }
+    public void ShowItem(GameObject itemPrefab)
+    {
+        if (HasItem())
+        {
+            return;
+        }
+        headItem = Instantiate(itemPrefab, head);
+
+        headItem.transform.localPosition = new Vector3(0f, 0.3f, 0f);
+        headItem.transform.localRotation = Quaternion.identity;
+        //itemFilter.mesh = GameStructure.GetInstance().playerStructure.Item.mesh;
     }
 
     void Update()
