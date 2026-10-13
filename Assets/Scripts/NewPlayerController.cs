@@ -51,7 +51,7 @@ public class NewPlayerController : MonoBehaviour
         headItem = null;
 
         item.transform.SetParent(null);
-
+        
         Vector3 dropPos = transform.position + transform.forward * 1.0f;
 
         if (Physics.Raycast(dropPos + Vector3.up * 10f, Vector3.down, out RaycastHit hit, 20f))

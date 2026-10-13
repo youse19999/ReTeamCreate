@@ -5,11 +5,11 @@ public class PlayerStun : MonoBehaviour
 {
     [SerializeField] private float stunTime = 2f;
 
-    private GamePlayer player;
+    private NewPlayerController player;
 
     private void Awake()
     {
-        player = GetComponent<GamePlayer>();
+        player = GetComponent<NewPlayerController>();
     }
 
     public void Stun()

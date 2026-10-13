@@ -110,6 +110,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b9d20cff2e3af51499889589afe78619, type: 3}
       insertIndex: -1
       addedObject: {fileID: -4099812573693688413}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b9d20cff2e3af51499889589afe78619, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7738548010054834137}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b9d20cff2e3af51499889589afe78619, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7783295255859506473}
   m_SourcePrefab: {fileID: 100100000, guid: b9d20cff2e3af51499889589afe78619, type: 3}
 --- !u!4 &2461939817214690631 stripped
 Transform:
@@ -231,3 +237,32 @@ MonoBehaviour:
   rayStartHeight: 2
   rayDistance: 2
   head: {fileID: 166136792960422660}
+--- !u!114 &-7738548010054834137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2981736535927857149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 938faf28789b0aa4f97a848967fa2602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDistance: 2
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &7783295255859506473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2981736535927857149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c10dd2b36b1fb3e41b8f8ea1af1334d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunTime: 2
