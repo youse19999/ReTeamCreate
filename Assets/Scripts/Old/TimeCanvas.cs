@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
@@ -80,5 +81,10 @@ public class TimeCanvas : MonoBehaviour
                 digitImages[i].sprite = numberSprites[spriteIndex];
             }
         }
+    }
+
+    public void LoadNextScene()
+    {
+        SceneManager.LoadScene("Title");
     }
 }
