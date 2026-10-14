@@ -49,12 +49,7 @@ public class PointCanvas : MonoBehaviour
                 UpdatePlayerScoreDisplay(current2PScore, twoPlayerDigitImages);
             }
         }
-
-        Debug.Log(OnePlayerGoalArea);
-
-        if (OnePlayerGoalArea.point > TwoPlayerGoalArea.point) { OnePlayerWin(); }
-        else if (OnePlayerGoalArea.point > TwoPlayerGoalArea.point) { TwoPlayerWin(); }
-        else { Draw(); }
+        WinCheck();
     }
 
     // 指定されたプレイヤーのスコア画像を更新する共通メソッド
@@ -103,4 +98,21 @@ public class PointCanvas : MonoBehaviour
         anim.SetBool("TwoPWin", false);
     }
 
+    void WinCheck()
+    {
+        if(OnePlayerGoalArea.point> TwoPlayerGoalArea.point)
+        {
+            OnePlayerWin();
+        }
+
+        if (OnePlayerGoalArea.point < TwoPlayerGoalArea.point)
+        {
+            TwoPlayerWin();
+        }
+
+        if (OnePlayerGoalArea.point == TwoPlayerGoalArea.point)
+        {
+            Draw();
+        }
+    }
 }

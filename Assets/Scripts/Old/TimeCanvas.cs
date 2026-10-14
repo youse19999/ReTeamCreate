@@ -1,35 +1,38 @@
+﻿using TMPro;
 using UnityEngine;
-using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 public class TimeCanvas : MonoBehaviour
 {
     private Animator anim = null;
-    public TMP_Text TimeText;
     [SerializeField] bool Finish;
     [SerializeField] public float timelimit;
+
+    [SerializeField] private Sprite[] numberSprites;
+
+    [Header("--- Parameterの設定 ---")]
     [SerializeField] private CanvasScriptableObject canvasParameter;
 
-    //Timelimit��Text�̐ݒ�
-    public void ScoreRender(int time)
-    {
-        TimeText.text = "TimeLimit:" + time;
-    }
+    [Header("--- Time用の各桁のImageの設定 ---")]
+    [SerializeField] private Image[] TimeDigitImages;
 
-    //���Ԑ���
+
+    //時間制限
     public void TimeA(int time)
     {
         if (Finish)
         {
-            //���Ԃ��O�ɌŒ肷��
+            //時間を０に固定する
             timelimit = 0;
         }
         else
         {
-            Debug.Log("���Ԃ������Ă��܂�");
+            Debug.Log("時間が減っています");
 
             timelimit-=Time.deltaTime;
 
-            //TimeOut�ɂȂ����玞�Ԃ��~�߂�
+            //TimeOutになったら時間を止める
             if ((int)timelimit >= 1) { return; }
             anim.SetBool("Finish", true);
             Finish = true;
@@ -47,8 +50,35 @@ public class TimeCanvas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ScoreRender((int)timelimit);
-
         TimeA((int)timelimit);
+
+        UpdatePlayerScoreDisplay((int)timelimit, TimeDigitImages);
+    }
+
+    private void UpdatePlayerScoreDisplay(int time, Image[] digitImages)
+    {
+        // 桁数の画像が登録されていない場合はスキップ
+        if (digitImages == null || digitImages.Length == 0) return;
+
+        // 3桁（0～999）の範囲に収める
+        time = Mathf.Clamp(time, 0, 999);
+
+        // 点数を4桁の文字列に変換（例: 5点 ➔ "005"）
+        string scoreText = time.ToString("D3");
+
+        // 各桁の画像を表示された文字に合わせて切り替える
+        for (int i = 0; i < digitImages.Length; i++)
+        {
+            // 安全対策：文字数とImageの数が合わない場合のクラッシュ防止
+            if (i >= scoreText.Length) break;
+
+            char digitChar = scoreText[i];
+            int spriteIndex = digitChar - '0'; // 文字を数値に変換
+
+            if (digitImages[i] != null)
+            {
+                digitImages[i].sprite = numberSprites[spriteIndex];
+            }
+        }
     }
 }
