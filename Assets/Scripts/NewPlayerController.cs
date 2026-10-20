@@ -14,6 +14,8 @@ public class NewPlayerController : MonoBehaviour
     [SerializeField] private float rayDistance = 5.0f;
     [SerializeField] private Transform head;
 
+    [SerializeField] private Animator animator;
+
     private Vector2 leftStickInput;
     private Vector2 rightStickInput;
 
@@ -82,6 +84,8 @@ public class NewPlayerController : MonoBehaviour
     {
         float forwardInput = leftStickInput.y;
         float turnInput = rightStickInput.x;
+
+        animator.SetFloat("run",new Vector3(rigidbody.linearVelocity.x,0.0f, rigidbody.linearVelocity.z).magnitude);
 
         // à⁄ìÆÅiAddForceÅj
         rigidbody.AddForce((this.transform.forward * forwardInput) * speed);
