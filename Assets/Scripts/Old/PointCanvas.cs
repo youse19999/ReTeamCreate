@@ -5,7 +5,11 @@ using UnityEngine.UI;
 public class PointCanvas : MonoBehaviour
 {
     private Animator anim = null;
-    [SerializeField] private Sprite[] numberSprites;
+    [Header("--- 青色の数字の設定 ---")]
+    [SerializeField] private Sprite[] numberSpritesBlue;
+    
+    [Header("--- 赤色の数字の設定 ---")]
+    [SerializeField] private Sprite[] numberSpritesRed;
 
 
     [Header("--- 1Player（OnePlayer）の設定 ---")]
@@ -35,7 +39,7 @@ public class PointCanvas : MonoBehaviour
             if (current1PScore != lastOnePlayerScore)
             {
                 lastOnePlayerScore = current1PScore;
-                UpdatePlayerScoreDisplay(current1PScore, onePlayerDigitImages);
+                UpdatePlayerScoreDisplayBlue(current1PScore, onePlayerDigitImages);
             }
         }
 
@@ -46,14 +50,14 @@ public class PointCanvas : MonoBehaviour
             if (current2PScore != lastTwoPlayerScore)
             {
                 lastTwoPlayerScore = current2PScore;
-                UpdatePlayerScoreDisplay(current2PScore, twoPlayerDigitImages);
+                UpdatePlayerScoreDisplayRed(current2PScore, twoPlayerDigitImages);
             }
         }
         WinCheck();
     }
 
-    // 指定されたプレイヤーのスコア画像を更新する共通メソッド
-    private void UpdatePlayerScoreDisplay(int score, Image[] digitImages)
+    // 指定されたプレイヤーのスコア画像を更新するメソッド(青のみ)
+    private void UpdatePlayerScoreDisplayBlue(int score, Image[] digitImages)
     {
         // 桁数の画像が登録されていない場合はスキップ
         if (digitImages == null || digitImages.Length == 0) return;
@@ -75,7 +79,35 @@ public class PointCanvas : MonoBehaviour
 
             if (digitImages[i] != null)
             {
-                digitImages[i].sprite = numberSprites[spriteIndex];
+                digitImages[i].sprite = numberSpritesBlue[spriteIndex];
+            }
+        }
+    }
+
+    // 指定されたプレイヤーのスコア画像を更新するメソッド(赤のみ)
+    private void UpdatePlayerScoreDisplayRed(int score, Image[] digitImages)
+    {
+        // 桁数の画像が登録されていない場合はスキップ
+        if (digitImages == null || digitImages.Length == 0) return;
+
+        // 3桁（0～999）の範囲に収める
+        score = Mathf.Clamp(score, 0, 999);
+
+        // 点数を4桁の文字列に変換（例: 5点 ➔ "005"）
+        string scoreText = score.ToString("D3");
+
+        // 各桁の画像を表示された文字に合わせて切り替える
+        for (int i = 0; i < digitImages.Length; i++)
+        {
+            // 安全対策：文字数とImageの数が合わない場合のクラッシュ防止
+            if (i >= scoreText.Length) break;
+
+            char digitChar = scoreText[i];
+            int spriteIndex = digitChar - '0'; // 文字を数値に変換
+
+            if (digitImages[i] != null)
+            {
+                digitImages[i].sprite = numberSpritesRed[spriteIndex];
             }
         }
     }
