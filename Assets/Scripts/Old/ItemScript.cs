@@ -29,6 +29,24 @@ public class ItemScript : MonoBehaviour
 
     Camera mainCamera;
     Bounds itemBounds;
+    private void OnTriggerEnter(Collider col)
+    {
+        if (having) { return; }
+        if (!col.CompareTag("Player")) { return; }
+
+        NewPlayerController gamePlayer = col.GetComponent<NewPlayerController>();
+
+        if (gamePlayer == null) { return; }
+        if (gamePlayer.HasItem()) { return; }
+
+        having = true;
+
+        gamePlayer.ShowItem(gameObject);
+
+        Destroy(gameObject);
+
+        ItemSpawnManager.currentSpawnAmount--;
+    }
 
     void Start()
     {
