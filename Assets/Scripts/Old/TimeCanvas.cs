@@ -29,8 +29,6 @@ public class TimeCanvas : MonoBehaviour
         }
         else
         {
-            Debug.Log("時間が減っています");
-
             timelimit-=Time.deltaTime;
 
             //TimeOutになったら時間を止める
