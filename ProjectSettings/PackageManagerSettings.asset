@@ -43,7 +43,23 @@ MonoBehaviour:
     m_IsDefault: 0
     m_Capabilities: 0
     m_ConfigSource: 4
-  m_UserSelectedRegistryName: liltoon
+  - m_Id: scoped:project:vrm
+    m_Name: vrm
+    m_Url: https://package.openupm.com
+    m_Scopes:
+    - com.vrmc.vrm
+    m_IsDefault: 0
+    m_Capabilities: 0
+    m_ConfigSource: 4
+  - m_Id: scoped:project:gltf
+    m_Name: gltf
+    m_Url: https://package.openupm.com
+    m_Scopes:
+    - com.vrmc.gltf
+    m_IsDefault: 0
+    m_Capabilities: 0
+    m_ConfigSource: 4
+  m_UserSelectedRegistryName: gltf
   m_UserAddingNewScopedRegistry: 0
   m_RegistryInfoDraft:
     m_Modified: 0

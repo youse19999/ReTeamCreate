@@ -68,6 +68,22 @@
         "jp.lilxyzw.liltoon"
       ],
       "overrideBuiltIns": false
+    },
+    {
+      "name": "vrm",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.vrmc.vrm"
+      ],
+      "overrideBuiltIns": false
+    },
+    {
+      "name": "gltf",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.vrmc.gltf"
+      ],
+      "overrideBuiltIns": false
     }
   ]
 }

@@ -14,7 +14,7 @@ public class NewPlayerController : MonoBehaviour
     [SerializeField] private float rayDistance = 5.0f;
     [SerializeField] private Transform head;
 
-    [SerializeField] private Animator animator;
+    [SerializeField] public Animator animator;
 
     private Vector2 leftStickInput;
     private Vector2 rightStickInput;
