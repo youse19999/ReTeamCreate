@@ -126,35 +126,12 @@ public class ItemScript : MonoBehaviour
 
         UpdateItemBounds();
 
-        Vector3 cameraDirection = (mainCamera.transform.position - itemBounds.center).normalized;
+        Vector3 screenPosition = mainCamera.WorldToScreenPoint(itemBounds.center);
 
-        Vector3 boundsExtent = itemBounds.extents;
+        float itemDepth = Mathf.Max(itemBounds.size.x, itemBounds.size.y, itemBounds.size.z);
+        screenPosition.z -= itemDepth * 0.5f + surfaceOffset;
 
-        float distanceToSurface =
-            Mathf.Abs(cameraDirection.x) * boundsExtent.x +
-            Mathf.Abs(cameraDirection.y) * boundsExtent.y +
-            Mathf.Abs(cameraDirection.z) * boundsExtent.z;
-
-        pointCanvas.position = itemBounds.center + cameraDirection * (distanceToSurface + surfaceOffset);
-    }
-
-    private void OnTriggerEnter(Collider col)
-    {
-        if (having) { return; }
-        if (!col.CompareTag("Player")) { return; }
-
-        NewPlayerController gamePlayer = col.GetComponent<NewPlayerController>();
-
-        if (gamePlayer == null) { return; }
-        if (gamePlayer.HasItem()) { return; }
-
-        having = true;
-
-        gamePlayer.ShowItem(gameObject);
-
-        Destroy(gameObject);
-
-        ItemSpawnManager.currentSpawnAmount--;
+        pointCanvas.position = mainCamera.ScreenToWorldPoint(screenPosition);
     }
 
     private void Update()
