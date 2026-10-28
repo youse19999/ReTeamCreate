@@ -264,6 +264,8 @@ MonoBehaviour:
   sprite3: {fileID: 2070088997, guid: 3675a77c9c3ece1429f249e586161443, type: 3}
   pointCanvas: {fileID: 8102365970197987530}
   pointSizeRatio: 0.8
+  surfaceOffset: 0.02
+  getSE: {fileID: 8300000, guid: 35ce9c3aa80eab444844688839db8f98, type: 3}
 --- !u!65 &6817220703474053272
 BoxCollider:
   m_ObjectHideFlags: 0

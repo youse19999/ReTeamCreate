@@ -368,6 +368,7 @@ MonoBehaviour:
   pointCanvas: {fileID: 2046314883519398260}
   pointSizeRatio: 0.8
   surfaceOffset: 0.02
+  getSE: {fileID: 8300000, guid: 35ce9c3aa80eab444844688839db8f98, type: 3}
 --- !u!65 &5328028405767812943
 BoxCollider:
   m_ObjectHideFlags: 0

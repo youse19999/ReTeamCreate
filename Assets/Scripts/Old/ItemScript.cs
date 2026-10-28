@@ -27,6 +27,8 @@ public class ItemScript : MonoBehaviour
     [SerializeField, Range(0.1f, 1.0f)] float pointSizeRatio = 0.8f;
     [SerializeField] float surfaceOffset = 0.02f;
 
+    [SerializeField] private AudioClip getSE;
+
     Camera mainCamera;
     Bounds itemBounds;
     private void OnTriggerEnter(Collider col)
@@ -42,6 +44,8 @@ public class ItemScript : MonoBehaviour
         having = true;
 
         gamePlayer.ShowItem(gameObject);
+
+        AudioSource.PlayClipAtPoint(getSE, transform.position);
 
         Destroy(gameObject);
 

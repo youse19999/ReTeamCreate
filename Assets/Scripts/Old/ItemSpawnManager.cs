@@ -23,6 +23,10 @@ public class ItemSpawnManager : MonoBehaviour
     [SerializeField] private GameObject spawnEffectPrefab;
     [SerializeField] private float spawnEffectDelay = 1.0f;
 
+    //SE
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip spawnSE;
+
     public static int currentSpawnAmount;
 
     public List<GameObject> ItemList;
@@ -146,6 +150,8 @@ public class ItemSpawnManager : MonoBehaviour
     void SpawnItemObject(GameObject prefab, Vector3 spawnPosition)
     {
         GameObject spawnedItem = Instantiate(prefab, spawnPosition, Quaternion.identity);
+
+        audioSource.PlayOneShot(spawnSE);
 
         Collider itemCollider = spawnedItem.GetComponentInChildren<Collider>();
 
