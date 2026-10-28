@@ -151,15 +151,22 @@ public class ItemSpawnManager : MonoBehaviour
     {
         GameObject spawnedItem = Instantiate(prefab, spawnPosition, Quaternion.identity);
 
-        audioSource.PlayOneShot(spawnSE);
+        Renderer[] renderers = spawnedItem.GetComponentsInChildren<Renderer>();
 
-        Collider itemCollider = spawnedItem.GetComponentInChildren<Collider>();
+        if (renderers.Length == 0) { return; }
 
-        if (itemCollider == null) { return; }
+        Bounds itemBounds = renderers[0].bounds;
 
-        float offset = spawnPosition.y - itemCollider.bounds.min.y;
+        for (int i = 1; i < renderers.Length; ++i)
+        {
+            itemBounds.Encapsulate(renderers[i].bounds);
+        }
+
+        float offset = spawnPosition.y - itemBounds.min.y;
 
         spawnedItem.transform.position += Vector3.up * (offset + 0.02f);
+
+        audioSource.PlayOneShot(spawnSE);
     }
 
     bool TryGetSpawnPosition(out Vector3 spawnPosition)
